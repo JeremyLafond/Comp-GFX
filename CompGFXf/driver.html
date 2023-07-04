@@ -1,0 +1,165 @@
+<html lang="en">
+  <head>
+      <style>
+        .slidecontainer
+        {
+            width: 100%;
+        }
+
+        .slider
+        {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover
+        {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb
+        {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb
+        {
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        div label input 
+        {
+          margin-right:100px;
+        }
+
+        .cM-button 
+        {
+            margin:4px;
+            background-color:#FFFFFF;
+            border-radius:4px;
+            border:1px solid #D0D0D0;
+            overflow:auto;
+            float:left;
+        }
+
+        .cM-button label 
+        {
+            float:left;
+            width:4.0em;
+        }
+
+        .cM-button label span 
+        {
+            text-align:center;
+            padding:3px 0px;
+            display:block;
+        }
+
+        .cM-button label input 
+        {
+            position:absolute;
+            top:-20px;
+        }
+
+        .cM-button input:checked + span
+        {
+          color: #000
+        }
+
+        body 
+        {
+            border: 0;
+            background-color: white;
+            font-family:sans-serif;
+        }
+		
+		canvas
+		{
+			width: 100vw;
+			height: 100vh;
+			display: block;
+		}
+      </style>
+    <title> Jeremy Lafond's Assignment 7 </title>
+  </head>
+
+  <body onload = "main()">
+    <p> Jeremy Lafond's Assignment 7 </p>
+      <p>
+        <canvas id="webgl" width="400" height="300">
+        Please use a browser that supports "canvas"
+        </canvas>
+    </p>
+    <!-- Include external libraries -->
+    <script src = "lib/webgl-utils.js"></script>
+    <script src = "lib/webgl-debug.js"></script>
+    <script src = "lib/updated-cuon-utils.js"></script>
+    <script src = "lib/cuon-matrix.js"></script>
+	<script src = "lib/imageSample.js"></script>
+
+    <!-- Include tick function -->
+    <script src = "prog/tick.js"></script>
+
+    <!-- Include internal functions -->
+    <script src = "prog/eventFunctions.js"></script>
+    <script src = "prog/glslFunctions.js"></script>
+    <script src = "prog/htmlFunctions.js"></script>
+
+    <!-- Include scene objects -->
+    <script src = "prog/scene/camera.js"></script>
+    <script src = "prog/scene/scene.js"></script>
+    <script src = "prog/scene/vertex.js"></script>
+    <script src = "prog/scene/geometry.js"></script>
+	
+	<!-- Include cubes, sun, objects-->
+    <script src = "prog/geometries/animated/loadedOBJ.js"></script>
+    <script src = "prog/geometries/animated/webgl-obj-loader.js"></script>
+    <script src = "prog/geometries/square.js"></script>
+    <script src = "prog/geometries/animated/sunCube.js"></script>
+    <script src = "prog/geometries/tiltedCube.js"></script>
+    <script src = "prog/geometries/catObj.js"></script>
+
+    <!-- Include shaders -->
+    <script src = "prog/shaders.js"></script>
+
+    <!-- Include main program -->
+    <script src = "prog/main.js"></script>
+	
+	<img id="source" src = 'pixil2.png'
+       width="100" height="100">
+
+		<div>
+            Press WASD for movement.
+
+            Press IJKL for rotation.
+
+            Press + - for vertical movement.
+            <p>Get a cat's attention by clicking on it. It can be annoying to click on them. They will tell you a shitty joke and continue to ignore you. Sorry, I ran out of time to work on anything with major substance lol. Also play with the cloud slider if things aren't chaotic enough for you. I implemented a very strange specular fog also.</p>
+			<p>Camera:</p>
+			<label>Camera/Projection Mode:</label>
+				<button type="button" id="cMode">&#8734 Perspective &#8734</button>
+			Fov/Zoom:
+			<input type="range" min="1" max="180" step="10" value="50" id="fovVal">
+			Near:
+			<input type="range" min="0.01" max="19" step="0.2" value="0.001" id="nearVal">
+			Far:
+			<input type="range" min="300" max="10000000" step="10" value="300" id="farVal">
+            Cloud Entropy(Slide if you dare .______.):
+            <input type="range" min="0.1" max="60" step=".05" value="0.1" id="cloudy">
+        </div>
+  </body>
+</html>
